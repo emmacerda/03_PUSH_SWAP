@@ -49,7 +49,7 @@ t_list	*ft_lstnew(int content)
 
 void	ft_print_list(t_list *lst)
 {
-	while (lst != NULL)	
+	while (lst != NULL)
 	{
 		printf("%d", lst->content);
 		// if (lst->next != NULL)

@@ -12,47 +12,46 @@
 
 #include "ft_push_swap.h"
 
-void    reverse(t_list **stack)
+void	reverse(t_list **stack)
 {
-    t_list  *last;
-    t_list  *before_last;
-    t_list  *head;
+	t_list	*last;
+	t_list	*before_last;
+	t_list	*head;
+
 	// t_list *save;
-
-    if (!*stack|| !(*stack)->next)
-        return;
+	if (!*stack || !(*stack)->next)
+		return ;
 	// (*stack)->prev = NULL;
-    last = ft_lstlast(*stack);
-    before_last = last->prev;
+	last = ft_lstlast(*stack);
+	before_last = last->prev;
 	// save = last;
-    before_last->next = NULL;
-    head = *stack;
-    last->next = head;
-    head->prev = last;
-    *stack = last;
+	before_last->next = NULL;
+	head = *stack;
+	last->next = head;
+	head->prev = last;
+	*stack = last;
 }
 
-void    rra(t_list **a)
+void	rra(t_list **a)
 {
-    reverse(a);
-	write (1, "rra\n", 4);
+	reverse(a);
+	write(1, "rra\n", 4);
 }
 
-void    rrb(t_list **b)
+void	rrb(t_list **b)
 {
-    reverse(b);
-    write (1, "rrb\n", 4);
+	reverse(b);
+	write(1, "rrb\n", 4);
 }
 
-void    rrr(t_list **a, t_list **b)
+void	rrr(t_list **a, t_list **b)
 {
-    reverse(a);
-    reverse(b);
+	reverse(a);
+	reverse(b);
 	write(1, "rrr\n", 4);
 }
 
-
-//big main
+// big main
 // t_list  *new_node(int value)
 // {
 //     t_list  *node;

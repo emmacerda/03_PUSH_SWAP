@@ -14,10 +14,14 @@
 
 int	ft_count_digit(t_list *stack_a)
 {
-	int counter = 0;
-	int prev_counter = 0;
-	int save = 0;
-	int content;
+	int	counter;
+	int	prev_counter;
+	int	save;
+	int	content;
+
+	counter = 0;
+	prev_counter = 0;
+	save = 0;
 	while (stack_a != NULL)
 	{
 		prev_counter = counter;
@@ -32,19 +36,20 @@ int	ft_count_digit(t_list *stack_a)
 		}
 		if (counter > prev_counter)
 			save = counter;
-
 		stack_a = stack_a->next;
 	}
 	return (save);
 }
 
-t_list *ft_complex(t_list *stack_a, t_list *stack_b, struct data *b)
+t_list	*ft_complex(t_list *stack_a, t_list *stack_b, struct data *b)
 {
-	int digit;
-	int digit_parcourus;
-	int size;
-	int save_size;
-	int max_digit;
+	int	digit;
+	int	digit_parcourus;
+	int	size;
+	int	save_size;
+	int	max_digit;
+	int	base;
+	int	i;
 
 	digit = 9;
 	digit_parcourus = 0;
@@ -80,10 +85,9 @@ t_list *ft_complex(t_list *stack_a, t_list *stack_b, struct data *b)
 			digit--;
 		}
 	}
-
 	digit = 9;
-	int base  = 10;
-	int i = 0;
+	base = 10;
+	i = 0;
 	if (max_digit == 1)
 	{
 		size = ft_lstsize_stack(stack_b);
@@ -93,16 +97,13 @@ t_list *ft_complex(t_list *stack_a, t_list *stack_b, struct data *b)
 			b->pa++;
 			digit_parcourus++;
 		}
-
 		printf("A\n");
 		ft_print_list(stack_a);
-		return(stack_a);
+		return (stack_a);
 	}
-
 	digit_parcourus = 0;
-
 	while (i < max_digit - 1)
-	{	
+	{
 		size = ft_lstsize_stack(stack_b);
 		save_size = size;
 		while ((digit >= 0) && (stack_b != NULL))
@@ -134,7 +135,6 @@ t_list *ft_complex(t_list *stack_a, t_list *stack_b, struct data *b)
 		i++;
 		digit = 9;
 		base = base * 10;
-
 		size = ft_lstsize_stack(stack_a);
 		while (digit_parcourus < size)
 		{
@@ -142,7 +142,6 @@ t_list *ft_complex(t_list *stack_a, t_list *stack_b, struct data *b)
 			b->pb++;
 			digit_parcourus++;
 		}
-
 	}
 	digit_parcourus = 0;
 	size = ft_lstsize_stack(stack_b);
@@ -157,5 +156,4 @@ t_list *ft_complex(t_list *stack_a, t_list *stack_b, struct data *b)
 	ft_print_list(stack_a);
 	// ft_lstclear(&stack_a);
 	return (stack_a);
-	}
-
+}

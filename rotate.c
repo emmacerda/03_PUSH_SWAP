@@ -26,42 +26,40 @@ t_list	*ft_lstlast(t_list *lst)
 	return (node);
 }
 
-
-void    rotate(t_list **stack)
+void	rotate(t_list **stack)
 {
-    t_list  *node;
-    t_list  *last;
+	t_list	*node;
+	t_list	*last;
 
-    if (!*stack || !(*stack)->next)
-        return ;
-    node = *stack;
-    *stack = (*stack)->next;
-    (*stack)->prev = NULL;
-    last = ft_lstlast(*stack);
-    last->next = node;
-    node->prev = last;
-    node->next = NULL;
-
-}
-void    ra(t_list **a)
-{
-    rotate(a);
-    write (1, "ra\n", 3);
+	if (!*stack || !(*stack)->next)
+		return ;
+	node = *stack;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	last = ft_lstlast(*stack);
+	last->next = node;
+	node->prev = last;
+	node->next = NULL;
 }
 
-void    rb(t_list **b)
+void	ra(t_list **a)
 {
-    rotate(b);
-    write (1, "rb\n", 3);
+	rotate(a);
+	write(1, "ra\n", 3);
 }
 
-void    rr(t_list **a, t_list **b)
+void	rb(t_list **b)
 {
-    rotate(a);
-    rotate(b);
-    write (1, "rr\n", 3);
+	rotate(b);
+	write(1, "rb\n", 3);
 }
 
+void	rr(t_list **a, t_list **b)
+{
+	rotate(a);
+	rotate(b);
+	write(1, "rr\n", 3);
+}
 
 // big main
 // t_list  *new_node(int value)

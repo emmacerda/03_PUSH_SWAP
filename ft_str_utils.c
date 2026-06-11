@@ -19,15 +19,15 @@ int	ft_strncmp(const char *str1, const char *str2, size_t length)
 	i = 0;
 	if (length == 0)
 		return (0);
-	while (((str1[i] != '\0' && str2[i] != '\0')
-			&& (str1[i] == str2[i])) && (i < length - 1))
+	while (((str1[i] != '\0' && str2[i] != '\0') && (str1[i] == str2[i]))
+		&& (i < length - 1))
 		i++;
 	return ((unsigned char)str1[i] - (unsigned char)str2[i]);
 }
 
 int	ft_strlen(char *argv)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (argv[i] != '\0')

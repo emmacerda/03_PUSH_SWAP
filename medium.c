@@ -43,8 +43,6 @@ t_list	*medium(t_list **a, t_list **b)
 	{
 		move_top(b);
 		pa(a, b);
-		b->pa++;
-		b->count++;
 	}
 	return (*a);
 }
@@ -107,14 +105,10 @@ void	push_chunks(t_list **a, t_list **b, int nc)
 			if (is_in_chunk(*a, chunk, nc, size))
 			{
 				pb(a, b);
-				b->pb++;
-				b->count+;
 			}
 			else
 			{
 				ra(a);
-				b->ra+;
-				b->count++;
 			}
 		}
 		chunk++;
@@ -124,78 +118,68 @@ void	push_chunks(t_list **a, t_list **b, int nc)
 /*
 t_list	*new_node(int value)
 {
-    t_list  *node;
+	t_list	*node;
 
-    node = malloc(sizeof(t_list));
-    if (!node)
-        return (NULL);
-    node->value = value;
-    node->next = NULL;
-    node->prev = NULL;
-    return (node);
+	node = malloc(sizeof(t_list));
+	if (!node)
+		return (NULL);
+	node->value = value;
+	node->next = NULL;
+	node->prev = NULL;
+	return (node);
 }
 
-void    push_back(t_list **head, int value)
+void	push_back(t_list **head, int value)
 {
-    t_list *node;
-    t_list *tmp;
+	t_list	*node;
+	t_list	*tmp;
 
-    node = new_node(value);
-    if (!*head) { *head = node; return; }
-    tmp = *head;
-    while (tmp->next) tmp = tmp->next;
-    tmp->next = node;
-    node->prev = tmp;
+	node = new_node(value);
+	if (!*head) { *head = node; return ; }
+	tmp = *head;
+	while (tmp->next) tmp = tmp->next;
+	tmp->next = node;
+	node->prev = tmp;
 }
 
-int main(void)
+int	main(void)
 {
-    t_list *a = NULL;
-    t_list *b = NULL;
+	t_list	*a;
+	t_list	*b;
 
-    // stack A (10 valeurs)
-    a = new_node(9);
-    a->next = new_node(1);
-    a->next->prev = a;
-
-    a->next->next = new_node(8);
-    a->next->next->prev = a->next;
-
-    a->next->next->next = new_node(3);
-    a->next->next->next->prev = a->next->next;
-
-    a->next->next->next->next = new_node(7);
-    a->next->next->next->next->prev = a->next->next->next;
-
-    a->next->next->next->next->next = new_node(2);
-    a->next->next->next->next->next->prev = a->next->next->next->next;
-
-    a->next->next->next->next->next->next = new_node(6);
-    a->next->next->next->next->next->next->prev =
-    a->next->next->next->next->next;
-
-    a->next->next->next->next->next->next->next = new_node(5);
-    a->next->next->next->next->next->next->next->prev = 
-    a->next->next->next->next->next->next;
-
-    a->next->next->next->next->next->next->next->next = new_node(4);
-    a->next->next->next->next->next->next->next->next->prev =
-    a->next->next->next->next->next->next->next;
-
-    a->next->next->next->next->next->next->next->next->next = new_node(10);
-    a->next->next->next->next->next->next->next->next->next->prev 
-    = a->next->next->next->next->next->next->next->next;
-
-    printf("=== BEFORE ===\n");
-    print_stack(a, "A");
-    print_stack(b, "B");
-
-    medium(&a, &b);
-
-    printf("\n=== AFTER ===\n");
-    print_stack(a, "A");
-    print_stack(b, "B");
-
-    return 0;
+	a = NULL;
+	b = NULL;
+	// stack A (10 valeurs)
+	a = new_node(9);
+	a->next = new_node(1);
+	a->next->prev = a;
+	a->next->next = new_node(8);
+	a->next->next->prev = a->next;
+	a->next->next->next = new_node(3);
+	a->next->next->next->prev = a->next->next;
+	a->next->next->next->next = new_node(7);
+	a->next->next->next->next->prev = a->next->next->next;
+	a->next->next->next->next->next = new_node(2);
+	a->next->next->next->next->next->prev = a->next->next->next->next;
+	a->next->next->next->next->next->next = new_node(6);
+	a->next->next->next->next->next->next->prev =
+	a->next->next->next->next->next;
+	a->next->next->next->next->next->next->next = new_node(5);
+	a->next->next->next->next->next->next->next->prev =
+	a->next->next->next->next->next->next;
+	a->next->next->next->next->next->next->next->next = new_node(4);
+	a->next->next->next->next->next->next->next->next->prev =
+	a->next->next->next->next->next->next->next;
+	a->next->next->next->next->next->next->next->next->next = new_node(10);
+	a->next->next->next->next->next->next->next->next->next->prev
+	= a->next->next->next->next->next->next->next->next;
+	printf("=== BEFORE ===\n");
+	print_stack(a, "A");
+	print_stack(b, "B");
+	medium(&a, &b);
+	printf("\n=== AFTER ===\n");
+	print_stack(a, "A");
+	print_stack(b, "B");
+	return (0);
 }
 */

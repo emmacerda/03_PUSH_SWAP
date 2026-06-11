@@ -22,7 +22,7 @@
 // 	int i = 1;
 //
 // 	while (result[i] != NULL)
-// 	{		
+// 	{
 // 		content = ft_atoi(result[i]);
 // 		baby_node = ft_lstnew(content);
 // 		if (baby_node == NULL)
@@ -59,28 +59,32 @@ int	ft_lstsize_stack(t_list *lst)
 
 int	ft_check_int(int content, int *clone, int size)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (i < size)
 	{
 		if (content == clone[i])
 			return (i);
-		else 
+		else
 			i++;
 	}
 	return (0);
 }
 
-t_list *ft_create_stack_a(char *argv[], int *clone)
+t_list	*ft_create_stack_a(char *argv[], int *clone)
 {
-	int content;
-	// char **result;
-	t_list *stack_a = NULL;
-	t_list *baby_node;
-	t_list *parent_node;
-	int i = 0;
+	int		content;
+	t_list	*stack_a;
+	t_list	*baby_node;
+	t_list	*parent_node;
+	int		i;
 
+	// char **result;
+	stack_a = NULL;
+	i = 0;
 	while (argv[i] != NULL)
-	{		
+	{
 		content = ft_atoi(argv[i]);
 		baby_node = ft_lstnew(content);
 		baby_node->index = ft_check_int(content, clone, ft_clone_size(argv));
@@ -89,7 +93,7 @@ t_list *ft_create_stack_a(char *argv[], int *clone)
 			// (del)(content);
 			ft_lstclear(&stack_a);
 			ft_dprintf(2, "Error\n");
-			exit (1);
+			exit(1);
 		}
 		if (stack_a == NULL)
 		{
@@ -111,18 +115,24 @@ t_list *ft_create_stack_a(char *argv[], int *clone)
 
 t_list	*ft_create_stack_b(void)
 {
-	t_list *stack_b = NULL;	
-	return(stack_b);
+	t_list	*stack_b;
+
+	stack_b = NULL;
+	return (stack_b);
 }
 
 t_list	*ft_create_stack_temp(t_list *stack_b)
 {
-	t_list *stack_a = NULL;
-	int i = 0;
-	int content;
-	t_list *baby_node;
-	t_list *parent_node;
-	int size = ft_lstsize_stack(stack_b);
+	t_list	*stack_a;
+	int		i;
+	int		content;
+	t_list	*baby_node;
+	t_list	*parent_node;
+	int		size;
+
+	stack_a = NULL;
+	i = 0;
+	size = ft_lstsize_stack(stack_b);
 	while (i < size)
 	{
 		content = stack_b->content;
@@ -133,7 +143,7 @@ t_list	*ft_create_stack_temp(t_list *stack_b)
 			// (del)(content);
 			ft_lstclear(&stack_a);
 			ft_dprintf(2, "Error\n");
-			exit (1);
+			exit(1);
 		}
 		if (stack_a == NULL)
 		{
@@ -154,6 +164,5 @@ t_list	*ft_create_stack_temp(t_list *stack_b)
 	// printf("test\n");
 	// ft_print_list(stack_a);
 	// printf ("\n");
-	return(stack_a);
+	return (stack_a);
 }
-

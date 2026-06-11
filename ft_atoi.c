@@ -39,3 +39,31 @@ int	ft_atoi(char *str)
 	}
 	return (sign * res);
 }
+
+long	ft_atol(char *str)
+{
+	long	i;
+	long	res;
+	long	sign;
+
+	i = 0;
+	res = 0;
+	sign = 1;
+	while ((str[i] != '\0') && ((str[i] == 32)
+			|| (str[i] >= 9 && str[i] <= 13)))
+		i++;
+	if ((str[i] != '\0') && ((str[i] == '-') || (str[i] == '+')))
+	{
+		if (str[i] == '-')
+			sign = sign * (-1);
+		i++;
+	}
+	if (!(str[i] >= '0' && str[i] <= '9'))
+		return (0);
+	while ((str[i] != '\0') && (str[i] >= '0' && str[i] <= '9'))
+	{
+		res = res * 10 + (str[i] - 48);
+		i++;
+	}
+	return (sign * res);
+}

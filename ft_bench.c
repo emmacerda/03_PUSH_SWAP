@@ -19,7 +19,7 @@
 //
 void	ft_putfloat(int nb)
 {
-	char c;
+	char	c;
 
 	if (nb > 9)
 		ft_putfloat(nb / 10);
@@ -27,9 +27,9 @@ void	ft_putfloat(int nb)
 	write(2, &c, 1);
 }
 
-void ft_float(float b)
+void	ft_float(float b)
 {
-	int nb;
+	int	nb;
 
 	nb = (b * 10000);
 	write(2, "disorder: ", 10);
@@ -58,7 +58,7 @@ void	ft_bench(struct data *b)
 	}
 	else
 	{
-		if(b->check_flag == 1)	
+		if (b->check_flag == 1)
 			ft_dprintf(2, "Strategy: Simple / O(n2)\n");
 		else if (b->check_flag == 2)
 			ft_dprintf(2, "Strategy: Medium / O(n√n)\n");
@@ -75,16 +75,17 @@ void	ft_bench(struct data *b)
 		}
 	}
 	ft_dprintf(2, "Total_ops: %d\n", b->count);
-	ft_dprintf(2, "sa: %d, sb: %d, ss: %d, pa: %d, pb: %d\n", b->sa, b->sb, 
-			b->ss, b->pa, b->pb);
+	ft_dprintf(2, "sa: %d, sb: %d, ss: %d, pa: %d, pb: %d\n", b->sa, b->sb,
+		b->ss, b->pa, b->pb);
 	ft_dprintf(2, "ra: %d, rb: %d, rr: %d, rra: %d, rrb: %d, rrr: %d\n", b->ra,
-			b->rb, b->rr, b->rra, b->rrb, b->rrr);
-
+		b->rb, b->rr, b->rra, b->rrb, b->rrr);
 }
 
 // After sorting :
 // The computed bench.disorder (% with two decimals).
 // ◦ The name of the strategy used and its theoretical complexity class.
 // ◦ The total number of operations.
-// ◦ The count of each operation type (sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr).
-// The benchmark output must be sent to stderr and only appear when the flag is present.
+// ◦ The count of each operation type (sa, sb, ss, pa, pb, ra,
+//  rb, rr, rra, rrb, rrr).
+// The benchmark output must be sent to stderr and only appear when
+// the flag is present.

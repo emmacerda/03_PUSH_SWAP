@@ -116,4 +116,3 @@ char	**ft_split(char *s, char c)
 	ft_write_in_tab(s, new_tab, c, ft_count_words(s, c));
 	return (new_tab);
 }
-

@@ -14,20 +14,20 @@
 
 float	ft_find_disorder(t_list *lst)
 {
-	float valid_pairs;
-	float mistakes;
-	float total_pairs;
+	float	valid_pairs;
+	float	mistakes;
+	float	total_pairs;
 
 	valid_pairs = 0;
 	total_pairs = 0;
 	if (lst == NULL)
-		return 0;
+		return (0);
 	while (lst->next != NULL)
 	{
 		if (lst->next->content > lst->content)
 			valid_pairs++;
 		total_pairs++;
-		lst = lst->next;	
+		lst = lst->next;
 	}
 	mistakes = total_pairs - valid_pairs;
 	// if (total_pairs / 2 <= mistakes)
@@ -66,10 +66,7 @@ float	ft_find_disorder(t_list *lst)
 // 		if (lst->next->content < lst->content)
 // 			mistakes++;
 // 		total_pairs++;
-// 		lst = lst->next;	
+// 		lst = lst->next;
 // 	}
 // 	return (mistakes / total_pairs);
 // }
-
-
-
