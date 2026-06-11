@@ -54,7 +54,7 @@ void     move_to_top(t_node **a);
 void    simple(t_node **a, t_node **b);
 void     move_top(t_node **b);
 t_node  *find_max(t_node *b);
-void    push_chunks(t_node **a, t_node **b, int nc, int size);
+void    push_chunks(t_node **a, t_node **b, int nc);
 int    count_chunk(t_node  *a, int chunk, int nc, int size);
 int     is_in_chunk(t_node *lst, int chunk, int nc , int size);
 void    assign_index(t_node *lst);

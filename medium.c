@@ -38,7 +38,7 @@ t_list	*medium(t_list **a, t_list **b)
 	{
 		nc++;
 	}
-	push_chunks(a, b, nc, size);
+	push_chunks(a, b, nc);
 	while (*b)
 	{
 		move_top(b);
@@ -93,10 +93,12 @@ int	count_chunk(t_list *a, int chunk, int nc, int size)
 	return (count);
 }
 
-void	push_chunks(t_list **a, t_list **b, int nc, int size)
+void	push_chunks(t_list **a, t_list **b, int nc)
 {
 	int	chunk;
+	int	size;
 
+	size = ft_lstsize(*a);
 	chunk = 0;
 	while (chunk < nc)
 	{
