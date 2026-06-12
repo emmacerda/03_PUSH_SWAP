@@ -100,7 +100,7 @@ t_list	*simple(t_list **a, t_list **b, struct s_data *p);
 int		ft_lstsize_stack(t_list *lst);
 t_list	*ft_complex(t_list **stack_a, t_list **stack_b, struct s_data *b);
 t_list	*ft_create_stack_temp(t_list *stack_b);
-int		ft_strlen(char *argv);
+int		ft_strlen(char *str1, char *str2);
 int		ft_is_bench(char *argv);
 void	ft_bench( struct s_data *p);
 void	move_top(t_list **stack_b, struct s_data *b);

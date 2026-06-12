@@ -25,12 +25,20 @@ int	ft_strncmp(const char *str1, const char *str2, size_t length)
 	return ((unsigned char)str1[i] - (unsigned char)str2[i]);
 }
 
-int	ft_strlen(char *argv)
+int	ft_strlen(char *str1, char *str2)
 {
 	int	i;
+	int j;
 
 	i = 0;
-	while (argv[i] != '\0')
+	j = 0;
+	while (str1[i] != '\0')
 		i++;
+	while (str2[j] != '\0')
+		j++;
+	if (i < j)
+		return (j);
+	else if (j < i)
+		return (i);
 	return (i);
 }

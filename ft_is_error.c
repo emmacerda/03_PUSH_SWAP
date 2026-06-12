@@ -19,21 +19,16 @@ int	ft_is_duplicate(char *argv[])
 
 	i = 0;
 	j = 1;
-	// if (flag == 1) // OU 2 POUR BENCH
-	// {
-	// 	i = 2;
-	// 	j = 3;
-	// }
 	while (argv[i] != NULL)
 	{
+		j = i + 1;
 		while (argv[j] != NULL)
 		{
-			if (ft_strncmp(argv[i], argv[j], ft_strlen(argv[i])) == 0)
+			if (ft_strncmp(argv[i], argv[j], ft_strlen(argv[i], argv[j])) == 0)
 				return (1);
 			j++;
 		}
 		i++;
-		j = i + 1;
 	}
 	return (0);
 }
@@ -69,6 +64,7 @@ int	ft_is_double_flag(char *argv[])
 			}
 		}
 		i++;
+		j = i + 1;
 	}
 	return (0);
 }
