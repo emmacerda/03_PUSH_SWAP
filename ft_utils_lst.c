@@ -20,13 +20,13 @@ void	ft_del(int *content)
 void	ft_lstclear(t_list **lst)
 {
 	t_list	*save;
-	void	(*f)(int *);
+	// void	(*f)(int *);
 
-	f = &ft_del;
+	// f = &ft_del;
 	while (*lst != NULL)
 	{
 		save = (*lst)->next;
-		(*f)(&((*lst)->content));
+		// (*f)(&((*lst)->content));
 		free(*lst);
 		*lst = save;
 	}

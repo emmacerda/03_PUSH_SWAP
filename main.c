@@ -119,7 +119,7 @@ int    main(int argc, char *argv[])
 		exit(1);
 	}
 	run_sort(&stack_a, &stack_b, b, argv);
-	// ft_lstclear(&stack_a);
+	ft_lstclear(&stack_a);
 	stack_a = NULL;
 	return (0);
 }

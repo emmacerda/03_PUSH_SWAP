@@ -33,6 +33,7 @@ int	ft_is_duplicate(char *argv[])
 			j++;
 		}
 		i++;
+		j = i + 1;
 	}
 	return (0);
 }
