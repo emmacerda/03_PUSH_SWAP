@@ -12,38 +12,42 @@
 
 #include "ft_push_swap.h"
 
-void    pa(t_list **a, t_list **b)
+void	pa(t_list **stack_a, t_list **stack_b, struct data *b)
 {
-    t_list  *node;
-    t_list  *node2;
+	t_list	*node;
+	t_list	*node2;
 
-    if (!*b)
-        return ;
-    node = *b;
-    node2 = *a;
-    *b = (*b)->next;
-    node->next = node2;
-    node->prev = NULL;
-    if (node2)
-        node2->prev = node;
-    *a = node;
-   	write (1, "pa\n", 3);
+	if (!*stack_b)
+		return ;
+	node = *stack_b;
+	node2 = *stack_a;
+	*stack_b = (*stack_b)->next;
+	node->next = node2;
+	node->prev = NULL;
+	if (node2)
+		node2->prev = node;
+	*stack_a = node;
+	write(1, "pa\n", 3);
+	b->count++;
+	b->pa++;
 }
 
-void    pb(t_list **a, t_list **b)
+void	pb(t_list **stack_a, t_list **stack_b, struct data *b)
 {
-    t_list  *node;
-    t_list  *node2;
+	t_list	*node;
+	t_list	*node2;
 
-    if (!*a)
-        return ;
-    node = *a;
-    node2 = *b;
-    *a = (*a)->next;
-    node->next = node2;
-    node->prev = NULL;
-    if (node2)
-        node2->prev = node;
-    *b = node;
-	write (1, "pb\n", 3);
+	if (!*stack_a)
+		return ;
+	node = *stack_a;
+	node2 = *stack_b;
+	*stack_a = (*stack_a)->next;
+	node->next = node2;
+	node->prev = NULL;
+	if (node2)
+		node2->prev = node;
+	*stack_b = node;
+	write(1, "pb\n", 3);
+	b->count++;
+	b->pb++;
 }

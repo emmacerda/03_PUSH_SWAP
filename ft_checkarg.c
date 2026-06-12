@@ -6,13 +6,12 @@
 /*   By: emcerda <emcerda@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 08:50:36 by emcerda           #+#    #+#             */
-/*   Updated: 2026/05/30 11:10:31 by emcerda          ###   ########.fr       */
+/*   Updated: 2026/06/12 09:32:29 by emcerda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_dprintf.h"
 #include "ft_push_swap.h"
-#include <limits.h>
 
 // SI ARGV EST SOUS FORME ./a.out X X XX X
 // t_list	*ft_checkargs(char *argv[])
@@ -36,56 +35,28 @@
 // 	return (ft_create_stack(argv)); //DECALER LE POINTEUR DE 1
 //
 // }
-
-void	is_valid_range(char *str)
+int	ft_is_flag(char *argv)
 {
-	long	i;
-
-	i = ft_atol(str);
-	if (i > INT_MAX || i < INT_MIN)
-	{
-		ft_dprintf(2, "Error\n");
-		exit(1);
-	}
+	if (ft_strncmp("--simple", argv, 8) == 0)
+		// APPEL ALGO SIMPLE
+		return (1);
+	else if (ft_strncmp("--medium", argv, 8) == 0)
+		// APPEL ALGO MEDIUM
+		return (1);
+	else if (ft_strncmp("--complex", argv, 9) == 0)
+		// APPEL ALGO COMPLEX
+		return (1);
+	else if (ft_strncmp("--adaptive", argv, 10) == 0)
+		// APPEL ALGO ADAPTIVE
+		return (1);
+	return (0);
 }
 
-int	*ft_create_clone(char *argv[])
+int	ft_is_bench(char *argv)
 {
-	int	*clone;
-	int	i;
-	int	j;
-	int	save_i;
-
-	i = 0;
-	j = 0;
-	save_i = ft_clone_size(argv);
-	clone = malloc(sizeof(int) * save_i);
-	if (clone == NULL)
-		return (NULL);
-	while (argv[i] != NULL)
-	{
-		clone[j] = ft_atoi(argv[i]);
-		i++;
-		j++;
-	}
-	// i = 0;
-	// printf("0000000000\n");
-	// while(i < save_i)
-	// {
-	// 	printf("%d\n", clone[i]);
-	// 	i++;
-	// }
-	// printf("0000000000\n");
-	ft_sort_int_tab(clone, save_i);
-	// i = 0;
-	// printf("CLONE\n");
-	// while(i < save_i)
-	// {
-	// 	printf("%d\n", clone[i]);
-	// 	i++;
-	// }
-	// printf("CLoNE\n");
-	return (clone);
+	if (ft_strncmp("--bench", argv, 7) == 0)
+		return (1);
+	return (0);
 }
 
 t_list	*ft_checkarg(char *argv[])
@@ -98,7 +69,6 @@ t_list	*ft_checkarg(char *argv[])
 	i = 1;
 	ii = 0;
 	flag = 0;
-	// is_valid_range(argv[0]);
 	while (argv[i] != NULL)
 	{
 		if (argv[i][0] == '-' && argv[i][1] == '-')
@@ -110,6 +80,7 @@ t_list	*ft_checkarg(char *argv[])
 				exit(1);
 			}
 			flag++;
+			;
 		}
 		else if (ft_is_duplicate(argv, flag) == 1)
 		{
@@ -134,7 +105,6 @@ t_list	*ft_checkarg(char *argv[])
 				ii++;
 			}
 		}
-		is_valid_range(argv[i]);
 		ii = 0;
 		i++;
 		// save = argv[i];
@@ -146,6 +116,7 @@ t_list	*ft_checkarg(char *argv[])
 	// }
 	clone = ft_create_clone(argv + 1 + flag);
 	return (ft_create_stack_a((argv + 1 + flag), clone)); //, clone));
-	// result = ft_split(argv[1],32);
-	// return (ft_create_stack(result));
+															// result = ft_split(argv[1],
+																	// 32);
+															// return (ft_create_stack(result));
 }

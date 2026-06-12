@@ -32,23 +32,29 @@ void	reverse(t_list **stack)
 	*stack = last;
 }
 
-void	rra(t_list **a)
+void	rra(t_list **stack_a, struct data *b)
 {
-	reverse(a);
+	reverse(stack_a);
 	write(1, "rra\n", 4);
+	b->count++;
+	b->rra++;
 }
 
-void	rrb(t_list **b)
+void	rrb(t_list **stack_b, struct data *b)
 {
-	reverse(b);
+	reverse(stack_b);
 	write(1, "rrb\n", 4);
+	b->count++;
+	b->rrb++;
 }
 
-void	rrr(t_list **a, t_list **b)
+void	rrr(t_list **stack_a, t_list **stack_b, struct data *b)
 {
-	reverse(a);
-	reverse(b);
+	reverse(stack_a);
+	reverse(stack_b);
 	write(1, "rrr\n", 4);
+	b->count++;
+	b->rrr++;
 }
 
 // big main

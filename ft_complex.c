@@ -6,154 +6,97 @@
 /*   By: emcerda <emcerda@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 10:35:33 by emcerda           #+#    #+#             */
-/*   Updated: 2026/06/01 11:10:09 by emcerda          ###   ########.fr       */
+/*   Updated: 2026/06/12 09:59:01 by emcerda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-int	ft_count_digit(t_list *stack_a)
+int	ft_mouvement(t_list **stack_a, t_list **stack_b, int digit, struct data *b)
 {
-	int	counter;
-	int	prev_counter;
-	int	save;
-	int	content;
+	int	save_size;
 
-	counter = 0;
-	prev_counter = 0;
-	save = 0;
-	while (stack_a != NULL)
+	save_size = ft_lstsize_stack(*stack_a);
+	if ((((*stack_a)->index) % 10) == digit)
 	{
-		prev_counter = counter;
-		counter = 0;
-		content = stack_a->index;
-		// printf("prev = %d", prev_b->counter);
-		while (content > 0)
-		{
-			content = content / 10;
-			counter++;
-			// printf("content = %d", stack_a->content);
-		}
-		if (counter > prev_counter)
-			save = counter;
-		stack_a = stack_a->next;
+		pb(stack_a, stack_b, b);
+		rb(stack_b, b);
+		save_size--;
 	}
-	return (save);
+	else
+		ra(stack_a, b);
+	return (save_size);
 }
 
-t_list	*ft_complex(t_list *stack_a, t_list *stack_b, struct data *b)
+int	ft_mouvement_bis(t_list **stack_a, t_list **stack_b, int digit,
+		struct data *b)
 {
-	int	digit;
-	int	digit_parcourus;
+	int	save_size;
+
+	save_size = ft_lstsize_stack(*stack_b);
+	if (((*stack_b)->index / b->base) % 10 == digit)
+	{
+		pa(stack_a, stack_b, b);
+		// ra(&stack_a, b);
+		save_size--;
+	}
+	else
+		rb(stack_b, b);
+	b->digit_parcourus++;
+	return (save_size);
+}
+
+t_list	*ft_complex_bis(t_list **stack_a, t_list **stack_b, int max_digit,
+		struct data *b)
+{
 	int	size;
 	int	save_size;
-	int	max_digit;
-	int	base;
-	int	i;
+	int	digit;
 
-	digit = 9;
-	digit_parcourus = 0;
-	size = ft_lstsize_stack(stack_a);
-	save_size = size;
-	max_digit = ft_count_digit(stack_a);
-	while (stack_a != NULL)
+	b->digit_parcourus = 0;
+	while (max_digit - 1 >= 0)
 	{
-		while (digit >= 0)
-		{
-			while (digit_parcourus < size)
-			{
-				if (((stack_a->index) % 10) == digit)
-				{
-					pb(&stack_a, &stack_b);
-					b->count++;
-					b->pb++;
-					rb(&stack_b);
-					b->count++;
-					b->rb++;
-					save_size--;
-				}
-				else
-				{
-					ra(&stack_a);
-					b->count++;
-					b->ra++;
-				}
-				digit_parcourus++;
-			}
-			size = save_size;
-			digit_parcourus = 0;
-			digit--;
-		}
-	}
-	digit = 9;
-	base = 10;
-	i = 0;
-	if (max_digit == 1)
-	{
-		size = ft_lstsize_stack(stack_b);
-		while (digit_parcourus < size)
-		{
-			pa(&stack_a, &stack_b);
-			b->pa++;
-			digit_parcourus++;
-		}
-		printf("A\n");
-		ft_print_list(stack_a);
-		return (stack_a);
-	}
-	digit_parcourus = 0;
-	while (i < max_digit - 1)
-	{
-		size = ft_lstsize_stack(stack_b);
+		digit = 9;
+		size = ft_lstsize(*stack_b);
 		save_size = size;
 		while ((digit >= 0) && (stack_b != NULL))
 		{
-			while ((digit_parcourus < size) && (stack_b != NULL))
-			{
-				if ((stack_b->index / base) % 10 == digit)
-				{
-					pa(&stack_a, &stack_b);
-					b->count++;
-					b->pa++;
-					// ra(&stack_a, b);
-					// b->count++;
-					// b->rb++;v
-					save_size--;
-				}
-				else
-				{
-					rb(&stack_b);
-					b->count++;
-					b->rb++;
-				}
-				digit_parcourus++;
-			}
+			while ((b->digit_parcourus < size) && (stack_b != NULL))
+				save_size = ft_mouvement_bis(stack_a, stack_b, digit, b);
 			size = save_size;
-			digit_parcourus = 0;
+			b->digit_parcourus = 0;
 			digit--;
 		}
-		i++;
-		digit = 9;
-		base = base * 10;
-		size = ft_lstsize_stack(stack_a);
+		max_digit--;
+		b->base = b->base * 10;
+		ft_replace_stack_b(stack_a, stack_b, b);
+	}
+	ft_replace_stack_a(stack_a, stack_b, b);
+	return (*stack_a);
+}
+
+t_list	*ft_complex(t_list **stack_a, t_list **stack_b, struct data *b)
+{
+	int(digit) = 9;
+	int(digit_parcourus) = 0;
+	int(size) = ft_lstsize_stack(*stack_a);
+	int(save_size) = size;
+	int(max_digit) = ft_count_digit(stack_a);
+	while (digit >= 0)
+	{
 		while (digit_parcourus < size)
 		{
-			pb(&stack_a, &stack_b);
-			b->pb++;
+			save_size = ft_mouvement(stack_a, stack_b, digit, b);
 			digit_parcourus++;
 		}
+		size = save_size;
+		digit_parcourus = 0;
+		digit--;
 	}
-	digit_parcourus = 0;
-	size = ft_lstsize_stack(stack_b);
-	while (digit_parcourus < size)
+	if (max_digit == 1)
 	{
-		pa(&stack_a, &stack_b);
-		b->pa++;
-		digit_parcourus++;
+		ft_replace_stack_a(stack_a, stack_b, b);
+		return (*stack_a);
 	}
-	printf("AFTER");
-	printf("STACK_A :\n");
-	ft_print_list(stack_a);
-	// ft_lstclear(&stack_a);
-	return (stack_a);
+	return (ft_complex_bis(stack_a, stack_b, max_digit, b));
 }

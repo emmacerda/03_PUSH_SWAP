@@ -41,24 +41,29 @@ void	rotate(t_list **stack)
 	node->prev = last;
 	node->next = NULL;
 }
-
-void	ra(t_list **a)
+void	ra(t_list **stack_a, struct data *b)
 {
-	rotate(a);
+	rotate(stack_a);
 	write(1, "ra\n", 3);
+	b->count++;
+	b->ra++;
 }
 
-void	rb(t_list **b)
+void	rb(t_list **stack_b, struct data *b)
 {
-	rotate(b);
+	rotate(stack_b);
 	write(1, "rb\n", 3);
+	b->count++;
+	b->rb++;
 }
 
-void	rr(t_list **a, t_list **b)
+void	rr(t_list **stack_a, t_list **stack_b, struct data *b)
 {
-	rotate(a);
-	rotate(b);
+	rotate(stack_a);
+	rotate(stack_b);
 	write(1, "rr\n", 3);
+	b->count++;
+	b->rr++;
 }
 
 // big main

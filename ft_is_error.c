@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils_checkarg.c                                :+:      :+:    :+:   */
+/*   ft_is_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romapere <romapere@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: emcerda <emcerda@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/11 16:19:28 by romapere          #+#    #+#             */
-/*   Updated: 2026/06/11 16:19:32 by romapere         ###   ########.fr       */
+/*   Created: 2026/06/12 09:30:32 by emcerda           #+#    #+#             */
+/*   Updated: 2026/06/12 09:33:55 by emcerda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,26 @@ int	ft_is_duplicate(char *argv[], int flag)
 	return (0);
 }
 
-int	ft_is_bench(char *argv)
+
+void	is_valid_range(char *str)
+{
+	long	i;
+
+	i = ft_atol(str);
+	if (i > INT_MAX || i < INT_MIN)
+	{
+		ft_dprintf(2, "Error\n");
+		exit(1);
+	}
+}
+
+int	ft_is_double_flag(char *argv[])
 {
 	int	i;
 	int	j;
 
 	i = 1;
 	j = 2;
-	{
-		if (ft_strncmp("--bench", argv, 7) == 0)
-			return (1);
-		return (0);
-	}
 	while (argv[i] != NULL)
 	{
 		if (ft_is_flag(argv[i]))
@@ -63,39 +71,4 @@ int	ft_is_bench(char *argv)
 		i++;
 	}
 	return (0);
-}
-
-void	ft_swap(int *tab, int i)
-{
-	int	swap;
-
-	swap = tab[i];
-	tab[i] = tab[i - 1];
-	tab[i - 1] = swap;
-}
-
-void	ft_sort_int_tab(int *tab, int size)
-{
-	int	i;
-	int	j;
-	int	tour_de_tab;
-
-	i = 1;
-	j = 0;
-	tour_de_tab = size;
-	while (j < tour_de_tab)
-	{
-		while (i < size)
-		{
-			if (tab[i] < tab[i - 1])
-			{
-				ft_swap(tab, i);
-				i++;
-			}
-			else
-				i++;
-		}
-		i = 1;
-		j++;
-	}
 }

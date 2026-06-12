@@ -23,21 +23,27 @@ void	swap(t_list **stack)
 	(*stack)->next->content = tmp;
 }
 
-void	sa(t_list **a)
+void	sa(t_list **stack_a, struct data *b)
 {
-	swap(a);
+	swap(stack_a);
 	write(1, "sa\n", 3);
+	b->count++;
+	b->sa++;
 }
 
-void	sb(t_list **b)
+void	sb(t_list **stack_b, struct data *b)
 {
-	swap(b);
+	swap(stack_b);
 	write(1, "sb\n", 3);
+	b->count++;
+	b->sb++;
 }
 
-void	ss(t_list **a, t_list **b)
+void	ss(t_list **stack_a, t_list **stack_b, struct data *b)
 {
-	swap(a);
-	swap(b);
+	swap(stack_a);
+	swap(stack_b);
 	write(1, "ss\n", 3);
+	b->count++;
+	b->ss++;
 }

@@ -24,27 +24,27 @@
 //     write(1, "\n", 1);
 // }
 
-t_list	*medium(t_list **a, t_list **b)
+t_list	*medium(t_list **stack_a, t_list **stack_b, struct data *b)
 {
 	int	nc;
 	int	size;
 
-	if (!*a)
+	if (!*stack_a)
 		return (NULL);
-	assign_index(*a);
+	assign_index(*stack_a);
 	nc = 0;
-	size = ft_lstsize(*a);
+	size = ft_lstsize(*stack_a);
 	while (nc * nc < size)
 	{
 		nc++;
 	}
-	push_chunks(a, b, nc);
-	while (*b)
+	push_chunks(stack_a, stack_b, nc, b);
+	while (*stack_b)
 	{
-		move_top(b);
-		pa(a, b);
+		move_top(stack_b);
+		pa(stack_a, stack_b, b);
 	}
-	return (*a);
+	return (*stack_a);
 }
 
 void	assign_index(t_list *lst)
@@ -91,24 +91,24 @@ int	count_chunk(t_list *a, int chunk, int nc, int size)
 	return (count);
 }
 
-void	push_chunks(t_list **a, t_list **b, int nc)
+void	push_chunks(t_list **stack_a, t_list **stack_b, int nc, struct data *b)
 {
 	int	chunk;
 	int	size;
 
-	size = ft_lstsize(*a);
+	size = ft_lstsize(*stack_a);
 	chunk = 0;
 	while (chunk < nc)
 	{
-		while (*a && count_chunk(*a, chunk, nc, size) > 0)
+		while (*stack_a && count_chunk(*stack_a, chunk, nc, size) > 0)
 		{
-			if (is_in_chunk(*a, chunk, nc, size))
+			if (is_in_chunk(*stack_a, chunk, nc, size))
 			{
-				pb(a, b);
+				pb(stack_a, stack_b, b);
 			}
 			else
 			{
-				ra(a);
+				ra(stack_a, b);
 			}
 		}
 		chunk++;

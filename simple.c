@@ -70,17 +70,9 @@ void	move_to_top(t_list **a, struct data *b)
 	while (pos > 0)
 	{
 		if (pos <= size / 2)
-		{
-			ra(a);
-			b->count++;
-			b->ra++;
-		}
+			ra(a, b);
 		else
-		{
-			rra(a);
-			b->count++;
-			b->rra++;
-		}
+			rra(a, b);
 		pos = get_position(*a);
 		size = ft_lstsize(*a);
 	}
@@ -96,16 +88,12 @@ t_list	*simple(t_list **a, t_list **b, struct data *p)
 	while (size_a > 1)
 	{
 		move_to_top(a, p);
-		pb(a, b);
-		p->count++;
-		p->pb++;
+		pb(a, b, p);
 		size_a = ft_lstsize(*a);
 	}
 	while (*b)
 	{
-		pa(a, b);
-		p->count++;
-		p->pa++;
+		pa(a, b, p);
 	}
 	return (*a);
 }
@@ -161,20 +149,16 @@ t_list	*simple(t_list **a, t_list **b, struct data *p)
 //     a->next->next->next->next->next->prev = a->next->next->next->next;
 
 //     a->next->next->next->next->next->next = new_node(6);
-//     a->next->next->next->next->next->next->prev = 
-// a->next->next->next->next->next;
+//     a->next->next->next->next->next->next->prev = a->next->next->next->next->next;
 
 //     a->next->next->next->next->next->next->next = new_node(5);
-//     a->next->next->next->next->next->next->next->prev = 
-// a->next->next->next->next->next->next;
+//     a->next->next->next->next->next->next->next->prev = a->next->next->next->next->next->next;
 
 //     a->next->next->next->next->next->next->next->next = new_node(4);
-//     a->next->next->next->next->next->next->next->next->prev = 
-// a->next->next->next->next->next->next->next;
+//     a->next->next->next->next->next->next->next->next->prev = a->next->next->next->next->next->next->next;
 
 //     a->next->next->next->next->next->next->next->next->next = new_node(0);
-//     a->next->next->next->next->next->next->next->next->next->prev = 
-// a->next->next->next->next->next->next->next->next;
+//     a->next->next->next->next->next->next->next->next->next->prev = a->next->next->next->next->next->next->next->next;
 
 //     printf("=== BEFORE ===\n");
 //     print_stack(a, "A");

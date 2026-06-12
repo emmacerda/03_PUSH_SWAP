@@ -6,7 +6,7 @@
 /*   By: emcerda <emcerda@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 09:40:02 by emcerda           #+#    #+#             */
-/*   Updated: 2026/05/29 09:52:16 by emcerda          ###   ########.fr       */
+/*   Updated: 2026/06/12 10:43:06 by emcerda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,25 +37,22 @@ void	ft_float(float b)
 	write(2, ".", 1);
 	ft_putfloat(nb % 100);
 }
-//
-// int	main(void)
-// {
-// 	ft_float(0.2);
-// 	return (0);
-// }
+
+void	ft_printf_adaptive_strat(struct data *b)
+{
+	if (b->disorder >= 0 && b->disorder < 0.2)
+		ft_dprintf(2, "Strategy: Adaptive / O(n2)\n");
+	else if (b->disorder >= 0.2 && b->disorder < 0.5)
+		ft_dprintf(2, "Strategy: Adaptive / O(n√n)\n");
+	else if (b->disorder >= 0.5 && b->disorder <= 1)
+		ft_dprintf(2, "Strategy: Adaptive / O(n log n)\n");
+}
 
 void	ft_bench(struct data *b)
 {
 	ft_float(b->disorder);
 	if (b->check_flag == 0)
-	{
-		if (b->disorder >= 0 && b->disorder < 0.2)
-			ft_dprintf(2, "Strategy: Adaptive / O(n2)\n");
-		else if (b->disorder >= 0.2 && b->disorder < 0.5)
-			ft_dprintf(2, "Strategy: Adaptive / O(n√n)\n");
-		else if (b->disorder >= 0.5 && b->disorder <= 1)
-			ft_dprintf(2, "Strategy: Adaptive / O(n log n)\n");
-	}
+		ft_printf_adaptive_strat(b);
 	else
 	{
 		if (b->check_flag == 1)
@@ -65,14 +62,7 @@ void	ft_bench(struct data *b)
 		else if (b->check_flag == 3)
 			ft_dprintf(2, "Strategy: Complex / O(n log n)\n");
 		else if (b->check_flag == 4)
-		{
-			if (b->disorder >= 0 && b->disorder < 0.2)
-				ft_dprintf(2, "Strategy: Adaptive / O(n2)\n");
-			else if (b->disorder >= 0.2 && b->disorder < 0.5)
-				ft_dprintf(2, "Strategy: Adaptive / O(n√n)\n");
-			else if (b->disorder >= 0.5 && b->disorder <= 1)
-				ft_dprintf(2, "Strategy: Adaptive / O(n log n)\n");
-		}
+			ft_printf_adaptive_strat(b);
 	}
 	ft_dprintf(2, "Total_ops: %d\n", b->count);
 	ft_dprintf(2, "sa: %d, sb: %d, ss: %d, pa: %d, pb: %d\n", b->sa, b->sb,
@@ -80,12 +70,3 @@ void	ft_bench(struct data *b)
 	ft_dprintf(2, "ra: %d, rb: %d, rr: %d, rra: %d, rrb: %d, rrr: %d\n", b->ra,
 		b->rb, b->rr, b->rra, b->rrb, b->rrr);
 }
-
-// After sorting :
-// The computed bench.disorder (% with two decimals).
-// ◦ The name of the strategy used and its theoretical complexity class.
-// ◦ The total number of operations.
-// ◦ The count of each operation type (sa, sb, ss, pa, pb, ra,
-//  rb, rr, rra, rrb, rrr).
-// The benchmark output must be sent to stderr and only appear when
-// the flag is present.

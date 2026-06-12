@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils_checkarg2.c                               :+:      :+:    :+:   */
+/*   ft_create_tab.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romapere <romapere@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: emcerda <emcerda@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/11 16:46:40 by romapere          #+#    #+#             */
-/*   Updated: 2026/06/11 16:47:11 by romapere         ###   ########.fr       */
+/*   Created: 2026/06/12 09:31:50 by emcerda           #+#    #+#             */
+/*   Updated: 2026/06/12 10:08:47 by emcerda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_swap(int *tab, int i)
 	tab[i] = tab[i - 1];
 	tab[i - 1] = swap;
 }
+
 
 void	ft_sort_int_tab(int *tab, int size)
 {
@@ -47,46 +48,6 @@ void	ft_sort_int_tab(int *tab, int size)
 	}
 }
 
-int	ft_is_flag(char *argv)
-{
-	if (ft_strncmp("--simple", argv, 8) == 0)
-		// APPEL ALGO SIMPLE
-		return (1);
-	else if (ft_strncmp("--medium", argv, 8) == 0)
-		// APPEL ALGO MEDIUM
-		return (1);
-	else if (ft_strncmp("--complex", argv, 9) == 0)
-		// APPEL ALGO COMPLEX
-		return (1);
-	else if (ft_strncmp("--adaptive", argv, 10) == 0)
-		// APPEL ALGO ADAPTIVE
-		return (1);
-	return (0);
-}
-
-int	ft_is_double_flag(char *argv[])
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	j = 2;
-	while (argv[i] != NULL)
-	{
-		if (ft_is_flag(argv[i]))
-		{
-			while (argv[j] != NULL)
-			{
-				if (ft_is_flag(argv[j]) == 1)
-					return (1);
-				j++;
-			}
-		}
-		i++;
-	}
-	return (0);
-}
-
 int	ft_clone_size(char *argv[])
 {
 	int	i;
@@ -98,3 +59,27 @@ int	ft_clone_size(char *argv[])
 	}
 	return (i);
 }
+
+int	*ft_create_clone(char *argv[])
+{
+	int	*clone;
+	int	i;
+	int	j;
+	int	save_i;
+
+	i = 0;
+	j = 0;
+	save_i = ft_clone_size(argv);
+	clone = malloc(sizeof(int) * save_i);
+	if (clone == NULL)
+		return (NULL);
+	while (argv[i] != NULL)
+	{
+		clone[j] = ft_atoi(argv[i]);
+		i++;
+		j++;
+	}
+	ft_sort_int_tab(clone, save_i);
+	return (clone);
+}
+
