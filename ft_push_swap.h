@@ -50,6 +50,8 @@ struct data
 	int		rrr;
 };
 
+void	is_valid_range(char *str);
+void	ft_is_number(char *argv[], int i, int ii);
 int		main(int argc, char *argv[]);
 int		ft_dprintf(int fd, const char *str, ...);
 t_list	*ft_checkarg(char *argv[]);
@@ -99,7 +101,7 @@ t_list	*ft_create_stack_temp(t_list *stack_b);
 int		ft_strlen(char *argv);
 int		ft_is_bench(char *argv);
 void	ft_bench( struct data *p);
-void	move_top(t_list **b);
+void	move_top(t_list **stack_b, struct data *b);
 t_list	*find_max(t_list *b);
 void	push_chunks(t_list **stack_a, t_list **stack_b, int nc, struct data *b);
 int		count_chunk(t_list *a, int chunk, int nc, int size);

@@ -37,7 +37,6 @@ int	ft_is_duplicate(char *argv[], int flag)
 	return (0);
 }
 
-
 void	is_valid_range(char *str)
 {
 	long	i;
@@ -71,4 +70,18 @@ int	ft_is_double_flag(char *argv[])
 		i++;
 	}
 	return (0);
+}
+
+void	ft_is_number(char *argv[], int i, int ii)
+{
+	while (argv[i][ii] != '\0')
+	{
+		if ((argv[i][ii] < '0' || argv[i][ii] > '9')
+				&& (argv[i][ii] != 32) && (argv[i][0] != '-'))
+		{
+			ft_dprintf(2, "Error\n");
+			exit(1);
+		}
+		ii++;
+	}
 }

@@ -43,18 +43,18 @@ int	get_pos(t_list *stack, t_list *target)
 	return (pos);
 }
 
-void	move_top(t_list **b)
+void	move_top(t_list **stack_b, struct data *b)
 {
 	t_list	*max;
 	int		size;
 
-	max = find_max(*b);
-	size = ft_lstsize(*b);
-	while (*b && (*b) != max)
+	max = find_max(*stack_b);
+	size = ft_lstsize(*stack_b);
+	while (*stack_b && (*stack_b) != max)
 	{
-		if (get_pos(*b, max) <= size / 2)
-			rb(b);
+		if (get_pos(*stack_b, max) <= size / 2)
+			rb(stack_b, b);
 		else
-			rrb(b);
+			rrb(stack_b, b);
 	}
 }

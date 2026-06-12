@@ -41,7 +41,7 @@ t_list	*medium(t_list **stack_a, t_list **stack_b, struct data *b)
 	push_chunks(stack_a, stack_b, nc, b);
 	while (*stack_b)
 	{
-		move_top(stack_b);
+		move_top(stack_b, b);
 		pa(stack_a, stack_b, b);
 	}
 	return (*stack_a);

@@ -81,7 +81,7 @@ t_list	*ft_complex(t_list **stack_a, t_list **stack_b, struct data *b)
 	int(digit_parcourus) = 0;
 	int(size) = ft_lstsize_stack(*stack_a);
 	int(save_size) = size;
-	int(max_digit) = ft_count_digit(stack_a);
+	int(max_digit) = ft_count_digit(*stack_a);
 	while (digit >= 0)
 	{
 		while (digit_parcourus < size)

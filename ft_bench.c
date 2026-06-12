@@ -13,10 +13,6 @@
 #include "ft_dprintf.h"
 #include "ft_push_swap.h"
 
-// #include "ft_dprintf.h"
-// #include <unistd.h>
-// #include <stdio.h>
-//
 void	ft_putfloat(int nb)
 {
 	char	c;
@@ -36,6 +32,7 @@ void	ft_float(float b)
 	ft_putfloat(nb / 100);
 	write(2, ".", 1);
 	ft_putfloat(nb % 100);
+	write(2, "\n", 1);
 }
 
 void	ft_printf_adaptive_strat(struct data *b)

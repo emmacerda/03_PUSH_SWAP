@@ -13,47 +13,53 @@
 #include "ft_dprintf.h"
 #include "ft_push_swap.h"
 
+int	ft_check_flags_bis(char *argv, t_list **stack_a, t_list **stack_b,
+		struct data *b)
+{
+	if (argv[0] == '-' && argv[1] == '-')
+	{
+		if (ft_strncmp("--simple", argv, 8) == 0)
+		{
+			simple(stack_a, stack_b, b);
+			return (1);
+		}
+		else if (ft_strncmp ("--medium", argv, 8) == 0)
+		{
+			medium(stack_a, stack_b, b);
+			return (2);
+		}
+		else if (ft_strncmp("--complex", argv, 9) == 0)
+		{
+			ft_complex(stack_a, stack_b, b);
+			return (3);
+		}
+		else if (ft_strncmp("--adaptive", argv, 10) == 0)
+		{
+			ft_adaptive(stack_a, stack_b, b);
+			return (4);
+		}
+	}
+	return (0);
+}
+
 int	ft_check_flags(char *argv[], t_list **stack_a, t_list **stack_b,
 		struct data *b)
 {
-	int	i;
-	int	ii;
+	int	(i) = 0;
+	int	(ii) = 0;
+	int (res) = 0;
 
-	i = 0;
-	ii = 0;
 	while (argv[i] != NULL)
 	{
 		while (argv[i][ii] != '\0')
 		{
-			if (argv[i][0] == '-' && argv[i][1] == '-')
-			{
-				if (ft_strncmp("--simple", argv[i], 8) == 0)
-				{
-					ft_print_list(simple(stack_a, stack_b, b));
-					return (1);
-				}
-				// else if (ft_strncmp ("--medium", argv[i], 8) == 0)
-				// {
-				// 	ft_print_list(medium(stack_a, stack_b));
-				// 	return (2);
-				// }
-				else if (ft_strncmp("--complex", argv[i], 9) == 0)
-				{
-					ft_print_list(ft_complex(stack_a, stack_b, b));
-					return (3);
-				}
-				else if (ft_strncmp("--adaptive", argv[i], 10) == 0)
-				{
-					ft_print_list(ft_adaptive(stack_a, stack_b, b));
-					return (4);
-				}
-			}
+			res = ft_check_flags_bis(argv[i], stack_a, stack_b, b);
 			ii++;
 		}
 		i++;
 		ii = 0;
 	}
-	return (0);
+	return (res);
 }
 
 struct data	ft_init_struct(struct data bench)

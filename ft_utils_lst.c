@@ -52,8 +52,6 @@ void	ft_print_list(t_list *lst)
 	while (lst != NULL)
 	{
 		printf("%d", lst->content);
-		// if (lst->next != NULL)
-		// 	printf("\n");
 		printf("\n");
 		lst = lst->next;
 	}

@@ -12,38 +12,6 @@
 
 #include "ft_push_swap.h"
 
-// t_list *ft_create_stack_2(char *argv[])
-// {
-// 	int content;
-// 	char **result;
-// 	t_list *stack_a = NULL;
-// 	t_list *baby_node;
-// 	t_list *parent_node;
-// 	int i = 1;
-//
-// 	while (result[i] != NULL)
-// 	{
-// 		content = ft_atoi(result[i]);
-// 		baby_node = ft_lstnew(content);
-// 		if (baby_node == NULL)
-// 		{
-// 			// (del)(content);
-// 			ft_lstclear(&stack_a);
-// 			return (NULL);
-// 		}
-// 		if (stack_a == NULL)
-// 		{
-// 			stack_a = baby_node;
-// 			// printf("%d\n\n", lst->content);
-// 		}
-// 		else
-// 			parent_node->next = baby_node;
-// 		parent_node = baby_node;
-// 		i++;
-// 	}
-// 	ft_free(result, i);
-// 	return (stack_a);
-// }
 int	ft_lstsize_stack(t_list *lst)
 {
 	int	i;

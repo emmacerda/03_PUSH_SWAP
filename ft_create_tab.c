@@ -21,7 +21,6 @@ void	ft_swap(int *tab, int i)
 	tab[i - 1] = swap;
 }
 
-
 void	ft_sort_int_tab(int *tab, int size)
 {
 	int	i;
@@ -82,4 +81,3 @@ int	*ft_create_clone(char *argv[])
 	ft_sort_int_tab(clone, save_i);
 	return (clone);
 }
-
