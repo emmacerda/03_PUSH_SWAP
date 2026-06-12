@@ -43,7 +43,7 @@ int	get_pos(t_list *stack, t_list *target)
 	return (pos);
 }
 
-void	move_top(t_list **stack_b, struct data *b)
+void	move_top(t_list **stack_b, struct s_data *b)
 {
 	t_list	*max;
 	int		size;

@@ -41,7 +41,8 @@ void	rotate(t_list **stack)
 	node->prev = last;
 	node->next = NULL;
 }
-void	ra(t_list **stack_a, struct data *b)
+
+void	ra(t_list **stack_a, struct s_data *b)
 {
 	rotate(stack_a);
 	write(1, "ra\n", 3);
@@ -49,7 +50,7 @@ void	ra(t_list **stack_a, struct data *b)
 	b->ra++;
 }
 
-void	rb(t_list **stack_b, struct data *b)
+void	rb(t_list **stack_b, struct s_data *b)
 {
 	rotate(stack_b);
 	write(1, "rb\n", 3);
@@ -57,7 +58,7 @@ void	rb(t_list **stack_b, struct data *b)
 	b->rb++;
 }
 
-void	rr(t_list **stack_a, t_list **stack_b, struct data *b)
+void	rr(t_list **stack_a, t_list **stack_b, struct s_data *b)
 {
 	rotate(stack_a);
 	rotate(stack_b);

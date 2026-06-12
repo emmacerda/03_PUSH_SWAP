@@ -24,7 +24,7 @@
 //     write(1, "\n", 1);
 // }
 
-t_list	*medium(t_list **stack_a, t_list **stack_b, struct data *b)
+t_list	*medium(t_list **stack_a, t_list **stack_b, struct s_data *b)
 {
 	int	nc;
 	int	size;
@@ -91,7 +91,7 @@ int	count_chunk(t_list *a, int chunk, int nc, int size)
 	return (count);
 }
 
-void	push_chunks(t_list **stack_a, t_list **stack_b, int nc, struct data *b)
+void	push_chunks(t_list **stack_a, t_list **stack_b, int nc, struct s_data *b)
 {
 	int	chunk;
 	int	size;

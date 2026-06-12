@@ -12,18 +12,18 @@
 
 #include "ft_push_swap.h"
 
-int	ft_is_duplicate(char *argv[], int flag)
+int	ft_is_duplicate(char *argv[])
 {
 	int	i;
 	int	j;
 
-	i = 1;
-	j = 2;
-	if (flag == 1) // OU 2 POUR BENCH
-	{
-		i = 2;
-		j = 3;
-	}
+	i = 0;
+	j = 1;
+	// if (flag == 1) // OU 2 POUR BENCH
+	// {
+	// 	i = 2;
+	// 	j = 3;
+	// }
 	while (argv[i] != NULL)
 	{
 		while (argv[j] != NULL)

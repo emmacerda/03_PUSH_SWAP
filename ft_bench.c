@@ -35,7 +35,7 @@ void	ft_float(float b)
 	write(2, "\n", 1);
 }
 
-void	ft_printf_adaptive_strat(struct data *b)
+void	ft_printf_adaptive_strat(struct s_data *b)
 {
 	if (b->disorder >= 0 && b->disorder < 0.2)
 		ft_dprintf(2, "Strategy: Adaptive / O(n2)\n");
@@ -45,7 +45,7 @@ void	ft_printf_adaptive_strat(struct data *b)
 		ft_dprintf(2, "Strategy: Adaptive / O(n log n)\n");
 }
 
-void	ft_bench(struct data *b)
+void	ft_bench(struct s_data *b)
 {
 	ft_float(b->disorder);
 	if (b->check_flag == 0)

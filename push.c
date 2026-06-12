@@ -12,7 +12,7 @@
 
 #include "ft_push_swap.h"
 
-void	pa(t_list **stack_a, t_list **stack_b, struct data *b)
+void	pa(t_list **stack_a, t_list **stack_b, struct s_data *b)
 {
 	t_list	*node;
 	t_list	*node2;
@@ -32,7 +32,7 @@ void	pa(t_list **stack_a, t_list **stack_b, struct data *b)
 	b->pa++;
 }
 
-void	pb(t_list **stack_a, t_list **stack_b, struct data *b)
+void	pb(t_list **stack_a, t_list **stack_b, struct s_data *b)
 {
 	t_list	*node;
 	t_list	*node2;

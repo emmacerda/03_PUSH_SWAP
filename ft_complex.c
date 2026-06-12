@@ -12,7 +12,7 @@
 
 #include "ft_push_swap.h"
 
-int	ft_mouvement(t_list **stack_a, t_list **stack_b, int digit, struct data *b)
+int	ft_mouvement(t_list **stack_a, t_list **stack_b, int digit, struct s_data *b)
 {
 	int	save_size;
 
@@ -29,7 +29,7 @@ int	ft_mouvement(t_list **stack_a, t_list **stack_b, int digit, struct data *b)
 }
 
 int	ft_mouvement_bis(t_list **stack_a, t_list **stack_b, int digit,
-		struct data *b)
+		struct s_data *b)
 {
 	int	save_size;
 
@@ -47,7 +47,7 @@ int	ft_mouvement_bis(t_list **stack_a, t_list **stack_b, int digit,
 }
 
 t_list	*ft_complex_bis(t_list **stack_a, t_list **stack_b, int max_digit,
-		struct data *b)
+		struct s_data *b)
 {
 	int	size;
 	int	save_size;
@@ -75,13 +75,13 @@ t_list	*ft_complex_bis(t_list **stack_a, t_list **stack_b, int max_digit,
 	return (*stack_a);
 }
 
-t_list	*ft_complex(t_list **stack_a, t_list **stack_b, struct data *b)
+t_list	*ft_complex(t_list **stack_a, t_list **stack_b, struct s_data *b)
 {
-	int(digit) = 9;
-	int(digit_parcourus) = 0;
-	int(size) = ft_lstsize_stack(*stack_a);
-	int(save_size) = size;
-	int(max_digit) = ft_count_digit(*stack_a);
+	int (digit) = 9;
+	int (digit_parcourus) = 0;
+	int (size) = ft_lstsize_stack(*stack_a);
+	int (save_size) = size;
+	int (max_digit) = ft_count_digit(*stack_a);
 	while (digit >= 0)
 	{
 		while (digit_parcourus < size)

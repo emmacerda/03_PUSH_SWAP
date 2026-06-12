@@ -41,11 +41,11 @@ void	ft_error(void)
 
 t_list	*ft_checkarg(char *argv[])
 {
-	int	(ii) = 0;
-	int	(i) = 1;
-	int	(flag) = 0;
 	int	*clone;
 
+	int (ii) = 0;
+	int (i) = 1;
+	int (flag) = 0;
 	while (argv[i] != NULL)
 	{
 		if (argv[i][0] == '-' && argv[i][1] == '-')
@@ -55,17 +55,13 @@ t_list	*ft_checkarg(char *argv[])
 				ft_error();
 			flag++;
 		}
-		else if (ft_is_duplicate(argv, flag) == 1)
+		else if (ft_is_duplicate(argv + 1 + flag) == 1)
 			ft_error();
-		// else if (ft_is_double_flag(argv) == 1)
-		// {
-		// 	ft_dprintf(2, "Error");
-		// 	return (NULL);
-		// }
+		else if (ft_is_double_flag(argv) == 1)
+			ft_error();
 		else
 			ft_is_number(argv, i, ii);
 		is_valid_range(argv[i]);
-		ii = 0;
 		i++;
 	}
 	clone = ft_create_clone(argv + 1 + flag);

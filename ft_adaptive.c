@@ -12,7 +12,7 @@
 
 #include "ft_push_swap.h"
 
-t_list	*ft_adaptive(t_list **stack_a, t_list **stack_b, struct data *b)
+t_list	*ft_adaptive(t_list **stack_a, t_list **stack_b, struct s_data *b)
 {
 	if (b->disorder >= 0 && b->disorder < 0.2)
 	{

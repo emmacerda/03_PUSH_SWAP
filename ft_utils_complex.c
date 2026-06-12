@@ -39,7 +39,7 @@ int	ft_count_digit(t_list *stack_a)
 	return (save);
 }
 
-void	ft_replace_stack_a(t_list **stack_a, t_list **stack_b, struct data *b)
+void	ft_replace_stack_a(t_list **stack_a, t_list **stack_b, struct s_data *b)
 {
 	int	digit_parcourus;
 	int	size;
@@ -53,7 +53,7 @@ void	ft_replace_stack_a(t_list **stack_a, t_list **stack_b, struct data *b)
 	}
 }
 
-void	ft_replace_stack_b(t_list **stack_a, t_list **stack_b, struct data *b)
+void	ft_replace_stack_b(t_list **stack_a, t_list **stack_b, struct s_data *b)
 {
 	int	digit_parcourus;
 	int	size;

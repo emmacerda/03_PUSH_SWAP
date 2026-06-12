@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-Wall -Wextra -Werror
-# SANITIZER=-fsanitize=address
+SANITIZER=-fsanitize=address
 SOURCES =  ft_adaptive.c ft_atoi.c ft_checkarg.c ft_complex.c\
 		   ft_create_stacks.c ft_find_disorder.c ft_split.c\
 		   ft_str_utils.c ft_utils_lst.c main.c\
@@ -13,7 +13,7 @@ NAME = push_swap
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) libftprintf.a -o $(NAME)
+	$(CC) $(CFLAGS) $(SANITIZER) $(OBJECTS) libftprintf.a -o $(NAME)
 
 %.o: %.c ft_push_swap.h
 	$(CC) $(CFLAGS) -c $< -o $@

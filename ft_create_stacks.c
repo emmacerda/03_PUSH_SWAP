@@ -40,46 +40,83 @@ int	ft_check_int(int content, int *clone, int size)
 	return (0);
 }
 
-t_list	*ft_create_stack_a(char *argv[], int *clone)
+void    add_node(t_list **stack_a, t_list *baby_node, t_list **parent_node)
 {
-	int		content;
-	t_list	*stack_a;
-	t_list	*baby_node;
-	t_list	*parent_node;
-	int		i;
-
-	// char **result;
-	stack_a = NULL;
-	i = 0;
-	while (argv[i] != NULL)
-	{
-		content = ft_atoi(argv[i]);
-		baby_node = ft_lstnew(content);
-		baby_node->index = ft_check_int(content, clone, ft_clone_size(argv));
-		if (baby_node == NULL)
-		{
-			// (del)(content);
-			ft_lstclear(&stack_a);
-			ft_dprintf(2, "Error\n");
-			exit(1);
-		}
-		if (stack_a == NULL)
-		{
-			baby_node->prev = NULL;
-			stack_a = baby_node;
-		}
-		else
-		{
-			parent_node->next = baby_node;
-			baby_node->prev = parent_node;
-		}
-		parent_node = baby_node;
-		i++;
-	}
-	free(clone);
-	// ft_free(argv, i - 1);
-	return (stack_a);
+    if (*stack_a == NULL)
+    {
+        baby_node->prev = NULL;
+        *stack_a = baby_node;
+    }
+    else
+    {
+        (*parent_node)->next = baby_node;
+        baby_node->prev = *parent_node;
+    }
+    *parent_node = baby_node;
 }
+
+t_list    *ft_create_stack_a(char *argv[], int *clone)
+{
+    int        content;
+    t_list    *stack_a;
+    t_list    *baby_node;
+    t_list    *parent_node;
+    int        i;
+
+    stack_a = NULL;
+    i = 0;
+    while (argv[i] != NULL)
+    {
+        content = ft_atoi(argv[i]);
+        baby_node = ft_lstnew(content);
+        baby_node->index = ft_check_int(content, clone, ft_clone_size(argv));
+        if (baby_node == NULL)
+        {
+            ft_lstclear(&stack_a);
+            ft_dprintf(2, "Error\n");
+            exit(1);
+        }
+        add_node(&stack_a, baby_node, &parent_node);
+		i++;
+    }
+    free(clone);
+    return (stack_a);
+}
+// t_list	*ft_create_stack_a(char *argv[], int *clone)
+// {
+// 	int		content;
+// 	t_list	*stack_a;
+// 	t_list	*baby_node;
+// 	t_list	*parent_node;
+//
+// 	int		(i) = 0;
+// 	stack_a = NULL;
+// 	while (argv[i] != NULL)
+// 	{
+// 		content = ft_atoi(argv[i]);
+// 		baby_node = ft_lstnew(content);
+// 		baby_node->index = ft_check_int(content, clone, ft_clone_size(argv));
+// 		if (baby_node == NULL)
+// 		{
+// 			ft_lstclear(&stack_a);
+// 			ft_error();
+// 		}
+// 		if (stack_a == NULL)
+// 		{
+// 			baby_node->prev = NULL;
+// 			stack_a = baby_node;
+// 		}
+// 		else
+// 		{
+// 			parent_node->next = baby_node;
+// 			baby_node->prev = parent_node;
+// 		}
+// 		parent_node = baby_node;
+// 		i++;
+// 	}
+// 	free(clone);
+// 	return (stack_a);
+// }
 
 t_list	*ft_create_stack_b(void)
 {
@@ -87,50 +124,4 @@ t_list	*ft_create_stack_b(void)
 
 	stack_b = NULL;
 	return (stack_b);
-}
-
-t_list	*ft_create_stack_temp(t_list *stack_b)
-{
-	t_list	*stack_a;
-	int		i;
-	int		content;
-	t_list	*baby_node;
-	t_list	*parent_node;
-	int		size;
-
-	stack_a = NULL;
-	i = 0;
-	size = ft_lstsize_stack(stack_b);
-	while (i < size)
-	{
-		content = stack_b->content;
-		baby_node = ft_lstnew(content);
-		baby_node->index = stack_b->index;
-		if (baby_node == NULL)
-		{
-			// (del)(content);
-			ft_lstclear(&stack_a);
-			ft_dprintf(2, "Error\n");
-			exit(1);
-		}
-		if (stack_a == NULL)
-		{
-			baby_node->prev = NULL;
-			stack_a = baby_node;
-			// printf("%d\n\n", lst->content);
-		}
-		else
-		{
-			parent_node->next = baby_node;
-			baby_node->prev = parent_node;
-		}
-		parent_node = baby_node;
-		stack_b = stack_b->next;
-		i++;
-	}
-	// printf("\n");
-	// printf("test\n");
-	// ft_print_list(stack_a);
-	// printf ("\n");
-	return (stack_a);
 }

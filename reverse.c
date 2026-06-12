@@ -18,13 +18,10 @@ void	reverse(t_list **stack)
 	t_list	*before_last;
 	t_list	*head;
 
-	// t_list *save;
 	if (!*stack || !(*stack)->next)
 		return ;
-	// (*stack)->prev = NULL;
 	last = ft_lstlast(*stack);
 	before_last = last->prev;
-	// save = last;
 	before_last->next = NULL;
 	head = *stack;
 	last->next = head;
@@ -32,7 +29,7 @@ void	reverse(t_list **stack)
 	*stack = last;
 }
 
-void	rra(t_list **stack_a, struct data *b)
+void	rra(t_list **stack_a, struct s_data *b)
 {
 	reverse(stack_a);
 	write(1, "rra\n", 4);
@@ -40,7 +37,7 @@ void	rra(t_list **stack_a, struct data *b)
 	b->rra++;
 }
 
-void	rrb(t_list **stack_b, struct data *b)
+void	rrb(t_list **stack_b, struct s_data *b)
 {
 	reverse(stack_b);
 	write(1, "rrb\n", 4);
@@ -48,7 +45,7 @@ void	rrb(t_list **stack_b, struct data *b)
 	b->rrb++;
 }
 
-void	rrr(t_list **stack_a, t_list **stack_b, struct data *b)
+void	rrr(t_list **stack_a, t_list **stack_b, struct s_data *b)
 {
 	reverse(stack_a);
 	reverse(stack_b);
